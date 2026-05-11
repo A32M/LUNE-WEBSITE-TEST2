@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUNE Coffee Cart | Dallas, TX</title>
+
+  <style>
+    :root {
+      --cream: #F7F0E6;
+      --accent: #EDE4D5;
+      --soft: #FAF6F0;
+      --wine: #8B1A2E;
+      --text: #3B2E2A;
+      --white: #ffffff;
+      --shadow: rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: var(--soft);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(250,246,240,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 56px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--wine);
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a:hover {
+      color: var(--wine);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 2px;
+      background: var(--wine);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 0;
+      background:
+        radial-gradient(circle at top left, rgba(139,26,46,0.08), transparent 40%),
+        var(--cream);
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero-logo {
+      width: 240px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      color: var(--wine);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      transition: 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-primary {
+      background: var(--wine);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--wine);
+      color: var(--wine);
+    }
+
+    .btn-secondary:hover {
+      background: var(--wine);
+      color: var(--white);
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--wine);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: #6a5b56;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image img {
+      border-radius: 24px;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+    }
+
+    /* MENU */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .menu-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 24px;
+      border: 1px solid var(--accent);
+      box-shadow: 0 8px 20px var(--shadow);
+      transition: 0.3s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .menu-card h3 {
+      color: var(--wine);
+      margin-bottom: 0.7rem;
+      font-size: 1.25rem;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--accent);
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8d7d74;
+      text-align: center;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* FIND US */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid var(--accent);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .info-card h3 {
+      color: var(--wine);
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACT */
+
+    form {
+      display: grid;
+      gap: 1rem;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      background: var(--white);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--wine);
+      color: var(--white);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 140px;
+      margin: 0 auto 1rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-link {
+      display: inline-block;
+      margin-top: 1rem;
+      opacity: 0.9;
+    }
+
+    .social-link:hover {
+      opacity: 1;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 860px) {
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: var(--soft);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        display: none;
+        border-bottom: 1px solid var(--accent);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 7rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+          <a href="#" class="logo">
+            <img 
+               src="IMG_1063.png" 
+                alt="LUNE"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+             >
+            <span class="logo-text" style="display:none;">LUNE</span>
+          </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#findus">Find Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+
+    <img 
+      src="IMG_1063.png" 
+      alt="LUNE Logo"
+      class="hero-logo"
+      onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='block';"
+    >
+
+    <h1 id="heroFallback" style="display:none;">LUNE</h1>
+
+    <p>
+      A soft and elevated coffee cart experience serving handcrafted specialty lattes across Dallas, Texas.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Explore Menu</a>
+      <a href="#contact" class="btn btn-secondary">Book The Cart</a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Signature Menu</h2>
+        <p>Crafted with warmth, elegance, and a little moonlight.</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+          <h3>Cookie Butter Moon</h3>
+          <p>Sweet, creamy, and comforting with warm cookie butter notes.</p>
+        </div>
+
+        <div class="menu-card">
+          <h3>Spanish Latte</h3>
+          <p>A velvety espresso latte with sweet condensed milk richness.</p>
+        </div>
+
+        <div class="menu-card">
+          <h3>Cinnamon Cloud Latte</h3>
+          <p>Light cinnamon sweetness with a soft cloud-like finish.</p>
+        </div>
+
+        <div class="menu-card">
+          <h3>Honey Lune Latte</h3>
+          <p>Smooth espresso balanced with delicate honey sweetness.</p>
+        </div>
+
+        <div class="menu-card">
+          <h3>Caramel Macchiato</h3>
+          <p>Classic espresso layered with creamy milk and caramel drizzle.</p>
+        </div>
+
+        <div class="menu-card">
+          <h3>Tiramisu Latte</h3>
+          <p>A dessert-inspired latte with cocoa and espresso depth.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About LUNE</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-image">
+          <img src="Cart-Picture (1 of 1).jpg" alt="LUNE Coffee Cart">
+        </div>
+
+        <div class="about-text">
+          <p>
+            LUNE is a Dallas-based coffee cart designed around soft aesthetics, intentional details, and memorable coffee experiences.
+          </p>
+
+          <br>
+
+          <p>
+            From intimate gatherings to elevated events, every cup is crafted with care to create a warm and inviting atmosphere.
+          </p>
+
+          <br>
+
+          <p>
+            Elegant tones, handcrafted drinks, and a refined mobile setup make LUNE a unique addition to celebrations, weddings, and community events.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Add more images anytime by replacing the placeholder files.</p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <img src="Cart-Picture (1 of 1).jpg" alt="LUNE Coffee Cart Setup">
+        </div>
+
+        <div class="gallery-item">
+          Placeholder Image Slot
+        </div>
+
+        <div class="gallery-item">
+          Placeholder Image Slot
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section id="findus">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Find Us</h2>
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <h3>Location</h3>
+          <p>Dallas, Texas</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Hours</h3>
+          <p>Available for private events, pop-ups, weddings, and community gatherings.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Instagram</h3>
+          <p>@lunecoffee_co</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Book LUNE</h2>
+        <p>Reach out for event bookings and inquiries.</p>
+      </div>
+
+      <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <textarea name="message" placeholder="Tell us about your event..." required></textarea>
+
+        <button type="submit" class="btn btn-primary">
+          Send Inquiry
+        </button>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      <img src="IMG_1063.png" alt="LUNE Logo" class="footer-logo">
+
+      <p>LUNE Coffee Cart • Dallas, Texas</p>
+
+      <a class="social-link" href="https://www.instagram.com/lunecoffee_co/" target="_blank">
+        @lunecoffee_co
+      </a>
+
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
